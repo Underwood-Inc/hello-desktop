@@ -1,0 +1,72 @@
+{
+  "name": "hello-desktop",
+  "version": "0.1.0",
+  "description": "Minimal Vite + Electron + Tauri desktop shell starter (frameless chrome, same dist for both runtimes).",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.mjs",
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["electron", "esbuild"]
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:electron": "tsc && vite build --base ./",
+    "preview": "vite preview",
+    "electron:prepare": "node ./node_modules/electron/install.js",
+    "electron": "pnpm electron:prepare && electron .",
+    "electron:dist": "pnpm build:electron && electron-builder",
+    "electron:dist:linux": "pnpm build:electron && electron-builder --linux AppImage",
+    "electron:dist:win": "pnpm build:electron && electron-builder --win nsis",
+    "electron:dist:mac": "pnpm build:electron && electron-builder --mac dmg",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build --no-bundle",
+    "tauri:icon": "tauri icon electron/icons/icon.png",
+    "tauri:dist": "tauri build",
+    "tauri:dist:verbose": "tauri build -- -vv",
+    "tauri:dist:win": "tauri build --bundles nsis",
+    "tauri:dist:win:verbose": "tauri build --bundles nsis -- -vv",
+    "tauri:dist:linux": "tauri build --bundles appimage",
+    "tauri:dist:mac": "tauri build --bundles dmg",
+    "check": "tsc --noEmit",
+    "test": "node -e \"console.log('No unit tests in this template')\""
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.1",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  },
+  "build": {
+    "appId": "com.example.hello-desktop",
+    "productName": "Hello Desktop",
+    "icon": "electron/icons/icon.png",
+    "directories": {
+      "output": "release"
+    },
+    "files": ["dist/**", "electron/**", "package.json"],
+    "asar": true,
+    "compression": "maximum",
+    "win": {
+      "target": ["nsis"],
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": ["AppImage"]
+    },
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.developer-tools"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+/**
+ * Frameless shell: draggable region + window controls.
+ * Only mounted when `window.atlasShell` is present (Electron preload or Tauri shim).
+ */
+body.atlas-electron-frame {
+  --atlas-electron-chrome-top: 34px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+body.atlas-electron-frame #app {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: calc(100dvh - var(--atlas-electron-chrome-top));
+  max-height: calc(100dvh - var(--atlas-electron-chrome-top));
+}
+
+body.atlas-electron-frame #app {
+  min-height: calc(100dvh - var(--atlas-electron-chrome-top));
+  max-height: calc(100dvh - var(--atlas-electron-chrome-top));
+}
+
+.atlas-electron-titlebar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  height: 34px;
+  padding: 0 6px 0 12px;
+  box-sizing: border-box;
+  background: var(--atlas-bg-panel);
+  border-bottom: 1px solid var(--atlas-border-subtle);
+  color: var(--atlas-text-muted);
+  user-select: none;
+}
+
+.atlas-electron-titlebar__lead {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 8px;
+  -webkit-app-region: drag;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--atlas-text-primary) 82%, var(--atlas-accent-warm) 18%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.atlas-electron-titlebar__controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+.atlas-electron-titlebar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: var(--atlas-radius-sm);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.atlas-electron-titlebar__btn:hover {
+  background: color-mix(in srgb, var(--atlas-accent-warm) 14%, transparent);
+  color: var(--atlas-text-primary);
+}
+
+.atlas-electron-titlebar__btn--close:hover {
+  background: #c42b1c;
+  color: #fff;
+}
+
+.atlas-electron-titlebar__btn svg {
+  display: block;
+  pointer-events: none;
+}

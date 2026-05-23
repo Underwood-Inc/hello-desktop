@@ -1,0 +1,26 @@
+# hello-desktop — minimal requirements registry for traceability action testing.
+schema_version: 1
+
+requirements:
+  FR-001:
+    kind: FR
+    title: "Main view shows Hello Desktop heading"
+    summary: >
+      The primary window displays the Hello Desktop title and starter copy for the desktop shell.
+    owner: "hello-desktop"
+    status: active
+    priority: medium
+    tags:
+      - ui
+
+  FR-002:
+    kind: FR
+    title: "Second window affordance on main view"
+    summary: >
+      The main view exposes a control to open a secondary window (Tauri multi-window or browser fallback).
+    owner: "hello-desktop"
+    status: active
+    priority: low
+    tags:
+      - ui
+      - multi-window

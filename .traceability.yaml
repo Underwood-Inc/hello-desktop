@@ -1,0 +1,36 @@
+# hello-desktop traceability runtime config (requirements-tracer test harness).
+schema_version: 1
+
+testGlobs:
+  - "src/**/*.test.ts"
+  - "src/**/*.spec.ts"
+
+exclude:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/release/**"
+  - "**/src-tauri/target/**"
+  - "**/traceability-report/**"
+
+traceIdPattern: "\\[((?:[A-Z][A-Z0-9]*-)+\\d+)(?:,\\s*((?:[A-Z][A-Z0-9]*-)+\\d+))*\\]"
+requireTraceId: error
+
+kinds:
+  FR:
+    label: "Functional"
+
+jsdocTags:
+  required: []
+  optional:
+    - description
+    - owner
+
+output:
+  reportDir: "traceability-report"
+  reportEntry: "index.html"
+  scanJson: "traceability-report/scan.json"
+  auditJson: "traceability-report/audit.json"
+
+prComment:
+  newCommentEachRun: true
+  commentTitle: "Hello Desktop Traceability"

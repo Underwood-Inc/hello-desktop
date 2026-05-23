@@ -1,0 +1,33 @@
+# End-to-end test of Underwood-Inc/requirements-tracer-action + npm CLI.
+name: Traceability
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: hello-desktop-traceability-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  traceability:
+    name: Requirements traceability audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run published requirements-tracer action
+        uses: Underwood-Inc/requirements-tracer-action@v0.1.1
+        with:
+          tracer-package: '@underwoodinc/requirements-tracer@0.1.1'
+          artifact-name: traceability-report
+          token: ${{ secrets.GITHUB_TOKEN }}

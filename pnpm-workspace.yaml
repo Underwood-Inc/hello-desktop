@@ -1,0 +1,3 @@
+# Single-package workspace root — see apps/mappy/pnpm-workspace.yaml
+packages:
+  - "."

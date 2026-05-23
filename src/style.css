@@ -1,0 +1,44 @@
+:root {
+  --hello-bg: #1a1b26;
+  --hello-text: #c0caf5;
+  --hello-accent: #7aa2f7;
+  --atlas-bg-panel: #16161e;
+  --atlas-border-subtle: #2b2b35;
+  --atlas-text-primary: #c0caf5;
+  --atlas-text-muted: #565f89;
+  --atlas-accent-warm: #bb9af7;
+  --atlas-radius-sm: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  background: var(--hello-bg);
+  color: var(--hello-text);
+}
+
+.hello {
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.hello h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--hello-accent);
+}
+
+.hello p {
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.92;
+}

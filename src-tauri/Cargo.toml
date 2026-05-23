@@ -1,0 +1,30 @@
+[package]
+name = "hello-desktop-tauri"
+version = "0.1.0"
+description = "Tauri shell for hello-desktop (Vite dist shared with Electron)"
+authors = ["you"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+
+# Dev: same logic as apps/mappy — dependencies at opt-level 1, own code at 0.
+[profile.dev.package."*"]
+opt-level = 1
+
+# Match `apps/mappy` release tuning so the Tauri binary stays as small/slow-to-link as a shipped shell.
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+strip = true
+
+# CI variant: same guarantees, faster linker pass (~10 min faster on windows-latest).
+# Use via: tauri build --profile release-ci
+[profile.release-ci]
+inherits = "release"
+lto = "thin"
+codegen-units = 4

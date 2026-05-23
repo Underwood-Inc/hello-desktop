@@ -1,0 +1,46 @@
+# Typecheck + static production build (no Rust on CI — keeps this workflow cheap).
+# When this app lives inside the __CODE monorepo, use the root workflow:
+# `.github/workflows/hello-desktop-ci.yml` (nested `.github/` is not loaded by GitHub).
+name: CI
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hello-desktop-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+
+      - run: pnpm install
+
+      - name: Typecheck
+        run: pnpm check
+
+      - name: Sanity script
+        run: pnpm test
+
+      - name: Production static build (Vite)
+        run: pnpm build:electron
