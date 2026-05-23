@@ -34,3 +34,6 @@ output:
 prComment:
   newCommentEachRun: true
   commentTitle: "Hello Desktop Traceability"
+
+branding:
+  projectName: hello-desktop

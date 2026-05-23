@@ -26,8 +26,8 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Run published requirements-tracer action
-        uses: Underwood-Inc/requirements-tracer-action@v0.1.1
+        uses: Underwood-Inc/requirements-tracer-action@v0.1.2
         with:
-          tracer-package: '@underwoodinc/requirements-tracer@0.1.1'
+          tracer-package: '@underwoodinc/requirements-tracer@0.1.2'
           artifact-name: traceability-report
           token: ${{ secrets.GITHUB_TOKEN }}
