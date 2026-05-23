@@ -24,3 +24,22 @@ requirements:
     tags:
       - ui
       - multi-window
+
+  FR-003:
+    kind: FR
+    title: "Orphan requirement (warning fixture)"
+    summary: >
+      Deliberately uncovered by any test — should emit orphan-requirement warning on PRs.
+    owner: "hello-desktop"
+    status: active
+    priority: low
+
+  FR-005:
+    kind: FR
+    title: "Deprecated splash screen"
+    summary: >
+      Wind-down requirement — tests that still reference it should warn.
+    owner: "hello-desktop"
+    status: deprecated
+    deprecated_in: "2026-Q2"
+    replaced_by: [FR-001]
