@@ -12,7 +12,16 @@ Also serves as the **end-to-end test adopter** for [`requirements-tracer-action`
 | `.traceability.yaml` | Tracer config (globs, kinds) |
 | `src/hello.test.ts` | Valid fixture tests |
 
-**CI:** `.github/workflows/traceability.yml` runs the published Action on every PR.
+**Local CLI** (same as Mappy — `@underwoodinc/requirements-tracer` via `pnpm`):
+
+```bash
+pnpm install
+pnpm trace:audit    # exit 1 on errors; use before opening a PR
+pnpm trace:report   # writes traceability-report/index.html + summary.json
+pnpm trace:scan     # JSON scan only
+```
+
+**CI:** `.github/workflows/traceability.yml` runs the published Action on every PR (artifact upload + PR comment). Use local scripts while developing; CI validates the Action path adopters wire in GitHub.
 
 **Test PR:** branch `test/traceability-action-audit` adds intentional audit errors and warnings — use it to verify annotations, PR comments, and the HTML artifact.
 
@@ -24,6 +33,9 @@ Also serves as the **end-to-end test adopter** for [`requirements-tracer-action`
 | `pnpm tauri:dev` | Tauri + Vite dev |
 | `pnpm build:electron` | Production static build → `dist/` |
 | `pnpm check` | Typecheck |
+| `pnpm trace:audit` | Audit test trace IDs vs registry |
+| `pnpm trace:report` | Generate HTML traceability report |
+| `pnpm trace:scan` | Scan tests (JSON output) |
 
 Requires Node 22+ and pnpm 10+.
 

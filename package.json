@@ -35,13 +35,17 @@
     "tauri:dist:linux": "tauri build --bundles appimage",
     "tauri:dist:mac": "tauri build --bundles dmg",
     "check": "tsc --noEmit",
-    "test": "node -e \"console.log('No unit tests in this template')\""
+    "test": "node -e \"console.log('No unit tests in this template')\"",
+    "trace:audit": "trace audit --root . --config .traceability.yaml",
+    "trace:report": "trace report --root . --config .traceability.yaml",
+    "trace:scan": "trace scan --root . --config .traceability.yaml"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.11.1",
+    "@underwoodinc/requirements-tracer": "0.1.4",
     "electron": "^34.2.0",
     "electron-builder": "^25.1.8",
     "typescript": "^5.7.3",
