@@ -11,11 +11,11 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 tauri = { version = "2", features = ["protocol-asset"] }
 
-# Dev: same logic as apps/mappy — dependencies at opt-level 1, own code at 0.
+# Dev: dependencies at opt-level 1, own code at 0 (faster incremental builds).
 [profile.dev.package."*"]
 opt-level = 1
 
-# Match `apps/mappy` release tuning so the Tauri binary stays as small/slow-to-link as a shipped shell.
+# Release: size-oriented defaults for shipped desktop binaries.
 [profile.release]
 panic = "abort"
 codegen-units = 1

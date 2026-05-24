@@ -1,6 +1,4 @@
-# Typecheck + static production build (no Rust on CI — keeps this workflow cheap).
-# When this app lives inside the __CODE monorepo, use the root workflow:
-# `.github/workflows/hello-desktop-ci.yml` (nested `.github/` is not loaded by GitHub).
+# Typecheck, unit tests, and static production build (no Rust — keeps CI fast).
 name: CI
 
 on:
@@ -20,9 +18,6 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    defaults:
-      run:
-        working-directory: .
     steps:
       - uses: actions/checkout@v5
 
@@ -39,7 +34,7 @@ jobs:
       - name: Typecheck
         run: pnpm check
 
-      - name: Sanity script
+      - name: Unit tests
         run: pnpm test
 
       - name: Production static build (Vite)

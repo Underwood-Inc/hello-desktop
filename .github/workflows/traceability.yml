@@ -1,4 +1,4 @@
-# End-to-end test of Underwood-Inc/requirements-tracer-action + npm CLI.
+# Requirements traceability audit for this template repository.
 name: Traceability
 
 on:

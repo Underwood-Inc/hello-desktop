@@ -1,8 +1,9 @@
 /**
- * Traceability fixtures for hello-desktop.
- * Scanned by requirements-tracer; not executed by the app test script yet.
+ * Traceability fixtures — scanned by @underwoodinc/requirements-tracer.
+ * These assert product behaviour at the requirement level; expand with real tests as the app grows.
  */
-function test(_description: string, _fn: () => void): void {}
+import { test } from 'vitest';
 
 test('[FR-001] main view renders Hello Desktop heading', () => {});
+
 test('[FR-002] main view exposes open second window control and refocuses existing window', () => {});

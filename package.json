@@ -1,8 +1,8 @@
 {
   "name": "hello-desktop",
   "version": "0.1.0",
-  "description": "Minimal Vite + Electron + Tauri desktop shell starter (frameless chrome, same dist for both runtimes).",
-  "private": true,
+  "description": "GitHub template: Vite + TypeScript + Electron + Tauri desktop shell with CLAD layout, frameless chrome, and multi-window support.",
+  "private": false,
   "type": "module",
   "main": "electron/main.mjs",
   "packageManager": "pnpm@10.0.0",
@@ -10,6 +10,23 @@
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
   },
+  "keywords": [
+    "tauri",
+    "electron",
+    "vite",
+    "typescript",
+    "desktop",
+    "template",
+    "clad"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Underwood-Inc/hello-desktop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Underwood-Inc/hello-desktop/issues"
+  },
+  "homepage": "https://github.com/Underwood-Inc/hello-desktop#readme",
   "pnpm": {
     "onlyBuiltDependencies": ["electron", "esbuild"]
   },
@@ -35,7 +52,8 @@
     "tauri:dist:linux": "tauri build --bundles appimage",
     "tauri:dist:mac": "tauri build --bundles dmg",
     "check": "tsc --noEmit",
-    "test": "node -e \"console.log('No unit tests in this template')\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "trace:audit": "trace audit --root . --config .traceability.yaml",
     "trace:report": "trace report --root . --config .traceability.yaml",
     "trace:scan": "trace scan --root . --config .traceability.yaml"
@@ -49,7 +67,8 @@
     "electron": "^34.2.0",
     "electron-builder": "^25.1.8",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "vitest": "^2.1.1"
   },
   "build": {
     "appId": "com.example.hello-desktop",
