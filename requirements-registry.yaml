@@ -18,6 +18,7 @@ requirements:
     title: "Second window affordance on main view"
     summary: >
       The main view exposes a control to open a secondary window (Tauri multi-window or browser fallback).
+      Re-clicking the control raises an existing window — including un-minimizing it — instead of opening a duplicate.
     owner: "hello-desktop"
     status: active
     priority: low

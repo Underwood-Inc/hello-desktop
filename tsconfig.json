@@ -13,7 +13,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "paths": {
+      "$atoms/*": ["./src/atoms/*"],
+      "$molecules/*": ["./src/molecules/*"],
+      "$sockets/*": ["./src/sockets/*"],
+      "$plugs/*": ["./src/plugs/*"],
+      "$frames/*": ["./src/frames/*"],
+      "$recipes/*": ["./src/recipes/*"],
+      "$views/*": ["./src/views/*"],
+      "$apps/*": ["./src/apps/*"]
+    }
   },
   "include": ["src/**/*.ts", "vite.config.ts"]
 }

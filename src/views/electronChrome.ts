@@ -1,4 +1,4 @@
-import './electron-chrome.css';
+import '../electron-chrome.css';
 
 const APP_TITLE = 'Hello Desktop';
 
@@ -18,6 +18,7 @@ function iconClose(): string {
   return '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 2 L8 8 M8 2 L2 8" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg>';
 }
 
+/** View: frameless titlebar wired to `window.atlasShell` (Electron preload or Tauri plug). */
 export function mountElectronChrome(): void {
   const shell = window.atlasShell;
   if (!shell) return;
