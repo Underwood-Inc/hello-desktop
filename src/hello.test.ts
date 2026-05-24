@@ -5,4 +5,4 @@
 function test(_description: string, _fn: () => void): void {}
 
 test('[FR-001] main view renders Hello Desktop heading', () => {});
-test('[FR-002] main view exposes open second window control', () => {});
+test('[FR-002] main view exposes open second window control and refocuses existing window', () => {});
